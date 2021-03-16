@@ -42,7 +42,7 @@ class AicBoxesModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('aic_id','4');
+        $builder->where('notes_for','AicBoxes');
         $query = $builder->get();
 
         return $query->getRow();

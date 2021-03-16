@@ -42,7 +42,7 @@ class AicMailersModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('aic_id','1');
+        $builder->where('notes_for','AicMailers');
         $query = $builder->get();
 
         return $query->getRow();

@@ -31,7 +31,7 @@ class AicOwnPackagingModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('aic_id','5');
+        $builder->where('notes_for','AicOwnPackaging');
         $query = $builder->get();
 
         return $query->getRow();
