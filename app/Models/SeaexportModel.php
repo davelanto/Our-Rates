@@ -43,4 +43,23 @@ class SeaexportModel extends Model
         return $query->getRow();
     }
 
+
+    public function getNote()
+    {
+        $builder = $this->db->table('notes_tbl');
+        $builder->where('notes_for','SeaExport');
+        $query = $builder->get();
+
+        return $query->getRow();
+
+    }
+
+
+    public function updatenotes($data,$id)
+    {
+        $builder = $this->db->table('notes_tbl');
+        $builder->where('id',$id);
+        $builder->update($data);
+    }
+
 }

@@ -24,6 +24,7 @@ class Seaexport extends BaseController
 
         $data['seaexport'] = $model->read();
         $data['lastupdate'] = $model->lastupdate();
+        $data['note'] = $model->getNote();
         $title['title'] =   "Sea Export";
         
         echo view('templates/header',$title);
@@ -116,6 +117,38 @@ class Seaexport extends BaseController
             return redirect()->to('/seaexport');
         }
 
+    }
+
+
+
+    public function updatenotes()
+    {
+        $model = new SeaExportModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/seaexport');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
     }
 
 
