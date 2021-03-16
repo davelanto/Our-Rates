@@ -27,6 +27,7 @@ class BrokerageFport extends BaseController
         $data['BrokerageFport'] = $model->read();
         $data['charges'] = $model->readAllCharges();
         $data['lastupdate'] = $model->lastupdate();
+        $data['note'] = $model->getNote();
         $title['title'] =   "Brokerage - FREEPORT ZONE CHARGES";
          
         echo view('templates/header',$title);
@@ -107,6 +108,39 @@ class BrokerageFport extends BaseController
 
         }
 
+    }
+
+
+
+
+    public function updatenotes()
+    {
+        $model = new BrokerageFportModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/brokeragefport');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
     }
 
 

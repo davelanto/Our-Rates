@@ -24,6 +24,7 @@ class Seaimport extends BaseController
         $data['seaimport'] = $model->read();
         $data['lastupdate'] = $model->lastupdate();
         $title['title'] =   "Sea Import";
+        $data['note'] = $model->getNote();
         
         echo view('templates/header',$title);
         echo view('pages/seaimport', $data);
@@ -113,6 +114,38 @@ class Seaimport extends BaseController
             return redirect()->to('/seaimport');
         }
 
+    }
+
+
+
+    public function updatenotes()
+    {
+        $model = new SeaImportModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/seaimport');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
     }
 
 

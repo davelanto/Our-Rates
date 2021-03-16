@@ -33,7 +33,7 @@ class AspSeaFreightFCLModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('asp_id','7');
+        $builder->where('notes_for','AspSeaFCL');
         $query = $builder->get();
 
         return $query->getRow();

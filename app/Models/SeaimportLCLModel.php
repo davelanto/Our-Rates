@@ -34,7 +34,7 @@ class SeaimportLCLModel extends Model
     public function getnotes()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('sea_air_broke_id','6');
+        $builder->where('notes_for','SeaImpLCL');
         $query = $builder->get();
 
         return $query->getRow();

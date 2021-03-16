@@ -28,6 +28,8 @@ class AspRoro extends BaseController
         $data['asproro'] = $model->read();
         $data['asprorosched'] = $model->read_sched();
         $title['title'] = "RORO - (ROLL ON, ROLL OFF)";
+        $data['note'] = $model->getNote();
+        $data['schednote'] = $model->getschedNote();
   
         $data['lastupdate'] = $model->lastupdate();
         
@@ -194,6 +196,38 @@ class AspRoro extends BaseController
 
     }
 
+
+
+
+    public function updatenotes()
+    {
+        $model = new AspRoroModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/asproro');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
+    }
 
 
 

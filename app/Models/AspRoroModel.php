@@ -13,7 +13,7 @@ class AspRoroModel extends Model
 
     protected $allowedFields = [
 
-        'asp_id', 'destination', 'code', 'rates', 'etd', 'eta', 'route', 'last_update', 'user_id'
+        'asp_id', 'destination', 'code', 'rates', 'etd', 'eta', 'route', 'last_update', 'user_id', 'notes'
 
     ];
 
@@ -82,6 +82,38 @@ class AspRoroModel extends Model
         $builder->where('id',$id);
         $builder->update();
 
+    }
+
+
+
+    public function getNote()
+    {
+        $builder = $this->db->table('notes_tbl');
+        $builder->where('notes_for','AspRoroRate');
+        $query = $builder->get();
+
+        return $query->getRow();
+
+    }
+
+
+    
+    public function getschedNote()
+    {
+        $builder = $this->db->table('notes_tbl');
+        $builder->where('notes_for','AspRoroSched');
+        $query = $builder->get();
+
+        return $query->getRow();
+
+    }
+
+
+    public function updatenotes($data,$id)
+    {
+        $builder = $this->db->table('notes_tbl');
+        $builder->where('id',$id);
+        $builder->update($data);
     }
 
 

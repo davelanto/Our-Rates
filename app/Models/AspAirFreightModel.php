@@ -33,7 +33,7 @@ class AspAirFreightModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('asp_id','1');
+        $builder->where('notes_for','AspAirFreight');
         $query = $builder->get();
 
         return $query->getRow();

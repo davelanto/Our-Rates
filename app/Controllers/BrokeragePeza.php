@@ -27,6 +27,7 @@ class BrokeragePeza extends BaseController
         $data['BrokeragePeza'] = $model->read();
         $data['charges'] = $model->readAllCharges();
         $data['lastupdate'] = $model->lastupdate();
+        $data['note'] = $model->getNote();
         $title['title'] =   "Brokerage - Peza Charges";
          
         echo view('templates/header',$title);
@@ -108,6 +109,37 @@ class BrokeragePeza extends BaseController
     }
 
 
+
+
+    public function updatenotes()
+    {
+        $model = new BrokeragePezaModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/brokeragepeza');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
+    }
 
 
 

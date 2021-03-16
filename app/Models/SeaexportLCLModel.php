@@ -49,7 +49,7 @@ class SeaexportLCLModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('sea_air_broke_id','3');
+        $builder->where('notes_for','SeaExLCL');
         $query = $builder->get();
 
         return $query->getRow();

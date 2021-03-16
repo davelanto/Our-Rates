@@ -79,7 +79,7 @@ class BrokerageModel extends Model
     public function getnotes()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('sea_air_broke_id','101');
+        $builder->where('notes_for','BrokeConsump');
         $query = $builder->get();
 
         return $query->getRow();
