@@ -21,6 +21,7 @@ class Airexport extends BaseController
         $model = new AirexportModel();
 
         $data['airexport'] = $model->read();
+        $data['note'] = $model->getNote();
         $data['lastupdate'] = $model->lastupdate();
 
         $title['title'] = "Air Export";
@@ -153,6 +154,39 @@ class Airexport extends BaseController
 
 
     }
+
+
+
+    public function updatenotes()
+    {
+        $model = new AirexportModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/airexport');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
+    }
+
 
 
 

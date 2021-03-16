@@ -45,6 +45,24 @@ class AirexportModel extends Model
 
 
 
+    public function getNote()
+    {
+        $builder = $this->db->table('notes_tbl');
+        $builder->where('notes_for','AirExport');
+        $query = $builder->get();
+
+        return $query->getRow();
+
+    }
+
+
+    public function updatenotes($data,$id)
+    {
+        $builder = $this->db->table('notes_tbl');
+        $builder->where('id',$id);
+        $builder->update($data);
+    }
+
 
 
 }
