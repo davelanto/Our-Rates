@@ -28,6 +28,7 @@ class SeaexportFCL extends BaseController
         $data['group'] = $model->readGroup();
         $data['lastupdate'] = $model->lastupdate();
         $title['title'] =   "Sea Export - FCL";
+        $data['note'] = $model->getNote();
         
         echo view('templates/header',$title);
         echo view('pages/seaexportFCL',$data);
@@ -119,6 +120,37 @@ class SeaexportFCL extends BaseController
          return redirect()->to('/seaexportfcl');
         }
         
+    }
+
+
+    public function updatenotes()
+    {
+        $model = new SeaExportFCLModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/seaexportfcl');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
     }
 
 
