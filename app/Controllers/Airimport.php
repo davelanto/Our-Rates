@@ -27,6 +27,7 @@ class Airimport extends BaseController
 
         $data['airimport'] = $model->read();
         $data['lastupdate'] = $model->lastupdate();
+        $data['note'] = $model->getNote();
         $title['title'] = "Air Import";
         
         echo view('templates/header',$title);
@@ -143,6 +144,37 @@ class Airimport extends BaseController
         }
 
 
+    }
+
+
+    public function updatenotes()
+    {
+        $model = new AirimportModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/airimport');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
     }
 
 
