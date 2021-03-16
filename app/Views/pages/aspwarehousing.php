@@ -183,13 +183,13 @@
 
                                     <input type="hidden" name="noteid" value="<?=$note->id;?>" id="noteid">                            
                                     <label for="notes" class="form-label text-danger">Notes:</label>
-                                    <textarea class="form-control" id="notes" name="notes" rows="20"><?=$note->notes;?></textarea>
+                                    <textarea placeholder="Terms & Condition" class="form-control" id="notes" name="notes" rows="20"><?=$note->notes;?></textarea>
                                     <div id="notesfeedback" class="invalid-feedback">This Field is Required</div>
 
                             <?php else: ?>
 
                                     <label for="notes" class="form-label text-danger">Notes:</label>
-                                    <textarea class="form-control" id="notes" name="notes" rows="20" readonly><?=$note->notes;?></textarea>
+                                    <textarea placeholder="None" class="form-control" id="notes" name="notes" rows="20" readonly><?=$note->notes;?></textarea>
 
                                 <?php endif; ?>
 

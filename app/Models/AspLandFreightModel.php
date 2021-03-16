@@ -31,7 +31,7 @@ class AspLandFreightModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('asp_id','4');
+        $builder->where('notes_for','AspLandLTL');
         $query = $builder->get();
 
         return $query->getRow();

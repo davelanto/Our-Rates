@@ -33,7 +33,7 @@ class AspWarehousingModel extends Model
     public function getNote()
     {
         $builder = $this->db->table('notes_tbl');
-        $builder->where('asp_id','6');
+        $builder->where('notes_for','AspWarehousing');
         $query = $builder->get();
 
         return $query->getRow();

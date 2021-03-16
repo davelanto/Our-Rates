@@ -24,8 +24,7 @@ class AspLandftlFreight extends BaseController
 
         $model = new AspLandftlFreightModel(); 
         $title['title'] = "Land Freight - Full Truck Load";
-   
-
+        $data['note'] = $model->getNote();
         $data['asplandftlfreight'] = $model->read();
         $data['lastupdate'] = $model->lastupdate();
         
@@ -107,6 +106,40 @@ class AspLandftlFreight extends BaseController
             
         }
 
+    }
+
+
+
+
+
+    public function updatenotes()
+    {
+        $model = new AspLandftlFreightModel();
+
+        if($this->request->getMethod() == 'post')
+        {
+
+            $data = array(
+
+                'notes '        =>      $this->request->getPost('notes'),
+                'last_update'   =>      date('Y-m-d H:i:s'),
+                'user_id'       =>      $this->session->user_id
+
+            );
+
+
+            $model->updatenotes($data,$this->request->getPost('noteid'));
+            $this->session->setFlashdata('msg', 'Note(s) Updated Successfully!');
+            return redirect()->to('/asplandftlfreight');
+
+
+        }
+        else
+        {
+      
+           return view('errors/html/error_404');
+          
+        }
     }
 
 
