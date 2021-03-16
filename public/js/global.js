@@ -25,6 +25,8 @@ $('table.table').DataTable({
 
 
 
+ $('table.table').append('<caption style="caption-side: bottom" hidden>' + $('#notes').val() + '</caption>');
+
 
  $('.dataTables_scrollBody').css('height', '480px');
 
