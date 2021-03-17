@@ -58,7 +58,7 @@
             {
     ?>
         <div class="mb-5 bg-light p-4 border border-secondary rounded" >
-        <h6 class="text-uppercase text-center text-secondary fw-bold p-3"><?=$header->charges; ?></h6>
+        <h6 class="text-uppercase text-center text-secondary fw-bold p-3"><?=$header->charge; ?></h6>
         <input type="hidden" id="title" value = "<?=$header->charge_id;?>">
              <table class="table table-striped  table-responsive" style="width:100%; overflow-x:auto;">
                     <thead class= "bg-dark text-light text-justify">
