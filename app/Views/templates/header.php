@@ -127,9 +127,14 @@
 
 
         <?php if($this->session->user_type == 'Editor'): ?>
-            <li><a class="dropdown-item" href="<?= base_url('Account');?>">Accounts</a></li>
+          <li class="nav-item">
+          <a class="nav-link" href="<?= base_url('Account');?>">Accounts</a>
+         </li>
             <?php endif; ?>
-            <li><a class="dropdown-item" href="<?= base_url('Login/logout');?>">Logout</a></li>
+
+            <!-- <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('');?>">Change Password</a></li> -->
+            <li class="nav-item"><a class="nav-link" href="<?= base_url('Login/logout');?>">Logout</a></li>
         
 
 
@@ -147,7 +152,7 @@
 
 <div class="sidenav d-none d-lg-block d-xl-block poppins">
   
-  <a class=" fw-bolder text-uppercase title"> <span class="border-bottom border-light">Airspeed Intl. Corp</span></a>
+  <a class="fw-bolder text-uppercase title"> <span class="border-bottom border-light">Airspeed Intl. Corp</span></a>
   <a class="link" href="<?= base_url('airexport');?>">Air Export</a>
   <a class="link" href="<?= base_url('airimport');?>">Air Import</a>
   <a class="link" href="<?= base_url('seaexport');?>">Sea Export <span class="text-danger">-</span><span style="font-size:9px; border-bottom: 1px solid blue;" class="fw-bold"><br> Ocean Freight Asia And Middle East </span></a>

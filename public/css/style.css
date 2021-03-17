@@ -22,10 +22,6 @@ button{
     font-family: 'Poppins', sans-serif !important;
 }
 
-.navbar-light{
-    background-color: white !important;
-    
-}
 
 li .nav-link:hover{
     
@@ -250,7 +246,7 @@ input, select, option, textarea, button{
 
   .loginfooter{
 
-    margin-top:80px;
+    margin-top:50px;
     font-family: 'Poppins','sans-serif';
     color: #858585;
     font-size: 11px;

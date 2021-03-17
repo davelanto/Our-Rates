@@ -12,6 +12,9 @@ class Login extends BaseController
 
     public function index()
     {
+        if (isset($this->session->user_id)) {
+            return redirect()->to('/airexport'); 
+           }
 
 
         $model = new LoginModel(); 
