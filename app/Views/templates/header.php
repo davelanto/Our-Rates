@@ -125,18 +125,20 @@
           </ul>
         </li> -->
 
-
-        <?php if($this->session->user_type == 'Editor'): ?>
-          <li class="nav-item">
-          <a class="nav-link" href="<?= base_url('Account');?>">Accounts</a>
-         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         Accounts
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <?php if($this->session->user_type == 'Editor'): ?>
+            <li><a class="dropdown-item" href="<?= base_url('Account');?>">User Accounts</a></li>
             <?php endif; ?>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#changePassword" id="cpassword" style="cursor: pointer;">Change Password</a></li>
+          </ul>
+        </li>
 
-            <!-- <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('');?>">Change Password</a></li> -->
+       
             <li class="nav-item"><a class="nav-link" href="<?= base_url('Login/logout');?>">Logout</a></li>
-        
-
 
       </ul>
     </div>

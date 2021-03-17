@@ -259,6 +259,36 @@ class Account extends BaseController
     }
 
         
+
+
+
+    function changePassGlobal()
+    {
+
+        if ($this->request->getMethod() == 'post')
+        {
+       
+            $model = new AccountModel;
+
+            $data   =   array(
+
+                    
+                'password'         => base64_encode( $this->encrypter->encrypt($this->request->getPost('newpass1'))),
+                'last_update'      =>  date('Y-m-d H:i:s')
+
+
+            );
+
+
+            $model->update($this->request->getPost('userid1'),$data);    
+            $this->session->setFlashdata('msg', 'Password Changed Successfully!');
+            return redirect()->to($this->request->getPost('currenturl'));
+
+
+
+        }
+
+    }
     
 	
 

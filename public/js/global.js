@@ -63,3 +63,36 @@ $('table.table').DataTable({
 
 
   setTimeout(function(){ $(".alert.alert-success").alert('close'); }, 2000);
+
+
+
+
+
+
+
+  $('#cnewpassword1').keyup(function () {
+    
+    if($(this).val() != $('#newpass1').val())
+    {
+      $('#cpass1').html("Password Don't Match");
+      $('.save').prop('disabled',true);
+    }
+    else
+    {
+      $('#cpass1').html("");
+      $('.save').prop('disabled',false);
+    }
+
+
+  });
+
+
+  $('#newpass1').keyup(function () {
+    
+    $('#cnewpassword1').val('');
+    $('.save').prop('disabled',true);
+
+
+  });
+
+  

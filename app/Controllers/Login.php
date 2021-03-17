@@ -74,6 +74,7 @@ class Login extends BaseController
                     if ($web_password == trim($this->request->getPost('password')))
                     {
                         $this->session->setTempdata('user_id', $user_exists->user_id,7200);
+                        $this->session->setTempdata('username', $user_exists->username,7200);
                         $this->session->setTempdata('type_id', $user_exists->type_id,7200);
                         $this->session->setTempdata('user_type',$user_exists->user_type,7200);
 
