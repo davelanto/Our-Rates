@@ -76,6 +76,19 @@ class Login extends BaseController
                         $this->session->setTempdata('user_id', $user_exists->user_id,7200);
                         $this->session->setTempdata('type_id', $user_exists->type_id,7200);
                         $this->session->setTempdata('user_type',$user_exists->user_type,7200);
+
+
+                        $data2 = array(
+
+
+                            'user_id'      =>       $user_exists->user_id,
+                            'timestamp'    =>       date('Y-m-d H:i:s')
+
+                        );
+
+                        $model->audit_trail($data2);
+
+
                     
                         return redirect()->to('/airexport');
                     }

@@ -13,7 +13,7 @@ class LoginModel extends Model
 
 
     protected $allowedFields = [
-        'user_id', 'type_id','username'
+        'user_id', 'type_id','username','audit_id', 'user_id', 'timestamp'
     ];
 
 
@@ -29,6 +29,15 @@ class LoginModel extends Model
         $query = $builder->get();
 
         return $query->getRow();
+
+
+    }
+
+    public function audit_trail($data)
+    {
+
+        $builder = $this->db->table('login_audit');
+        $builder->insert($data);
 
 
     }
